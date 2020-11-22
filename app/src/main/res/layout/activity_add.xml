@@ -7,11 +7,10 @@
 
     <EditText
         android:id="@+id/name"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
+        android:layout_width="185dp"
+        android:layout_height="62dp"
         android:layout_marginTop="16dp"
         android:hint="Enter restaurant name"
-        android:digits="0123456789"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,12 +19,13 @@
 
     <EditText
         android:id="@+id/address"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
+        android:layout_width="185dp"
+        android:layout_height="43dp"
         android:layout_marginTop="16dp"
         android:hint="Enter restaurant address"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
@@ -53,7 +53,7 @@
 
     <EditText
         android:id="@+id/phone"
-        android:layout_width="180dp"
+        android:layout_width="185dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:hint="Enter restaurant phone"
@@ -64,7 +64,7 @@
 
     <EditText
         android:id="@+id/description"
-        android:layout_width="180dp"
+        android:layout_width="185dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:hint="Enter restaurant description"
@@ -75,15 +75,17 @@
 
     <AutoCompleteTextView
         android:id="@+id/tag"
-        android:layout_width="183dp"
+        android:layout_width="185dp"
         android:layout_height="49dp"
-        android:hint="Enter tag"
         android:layout_alignParentLeft="true"
+        android:layout_marginTop="16dp"
         android:ems="10"
+        android:hint="Enter tag"
         android:text=""
-        app:layout_constraintTop_toBottomOf="@+id/description"
-        tools:layout_editor_absoluteX="116dp"
-        tools:layout_editor_absoluteY="371dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description">
 
         <requestFocus />
     </AutoCompleteTextView>
