@@ -51,7 +51,7 @@ import java.util.Locale;
             if (view == null) {
                 holder = new ViewHolder();
                 view = inflater.inflate(R.layout.activity_search, null);
-                // Locate the TextViews in listview_item.xml
+
                 holder.name = (TextView) view.findViewById(R.id.name);
                 view.setTag(holder);
             } else {

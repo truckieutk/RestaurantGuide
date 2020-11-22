@@ -27,7 +27,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
         restaurantNameList = new String[]{"KFC", "Teddy Story", "Cresent",
                 "Sheridan", "Pour House", "168 Sushi", "Mimi Chicken"};
 
-        // Locate the ListView in listview_main.xml
+
         list = (ListView) findViewById(R.id.listview);
 
         for (int i = 0; i < restaurantNameList.length; i++) {
@@ -42,7 +42,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
         // Binds the Adapter to the ListView
         list.setAdapter(adapter);
 
-        // Locate the EditText in listview_main.xml
+
         editsearch = (SearchView) findViewById(R.id.search);
         editsearch.setOnQueryTextListener(this);
     }
