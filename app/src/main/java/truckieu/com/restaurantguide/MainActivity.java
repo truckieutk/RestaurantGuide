@@ -33,8 +33,10 @@ public class MainActivity extends AppCompatActivity {
                 AddActivity();
                 break;
             case R.id.search:
+                Search();
                 break;
             case R.id.about:
+                About();
                 break;
         }
         return super .onOptionsItemSelected(item);
@@ -61,5 +63,12 @@ public class MainActivity extends AppCompatActivity {
         Intent start = new Intent(getApplicationContext(),AddActivity.class);
         startActivity(start);
     }
-
+    private void Search() {
+        Intent start = new Intent(getApplicationContext(), SearchActivity.class);
+        startActivity(start);
+    }
+    private void About(){
+        Intent start = new Intent(getApplicationContext(), AboutActivity.class);
+        startActivity(start);
+    }
 }
