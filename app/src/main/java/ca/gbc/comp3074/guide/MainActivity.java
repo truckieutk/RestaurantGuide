@@ -35,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.search:
                 Search();
                 break;
-            case R.id.view:
-                break;
             case R.id.about:
                 About();
                 break;
