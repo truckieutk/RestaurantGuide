@@ -81,6 +81,7 @@ public class AddActivity extends AppCompatActivity {
         int id= item.getItemId();
         switch (id){
             case R.id.home:
+                Home();
                 break;
             case R.id.search:
                 Search();

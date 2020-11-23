@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Home"
+        android:id="@+id/home"/>
+
+    <item
+        android:title="Add"
+        android:id="@+id/add"/>
+
+    <item
+        android:title="Search"
+        android:id="@+id/search"/>
+
+    <item
+        android:title="About us"
+        android:id="@+id/about"/>
+
+</menu>
