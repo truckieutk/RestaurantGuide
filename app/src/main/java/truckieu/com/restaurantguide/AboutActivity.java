@@ -21,10 +21,6 @@ public class AboutActivity extends AppCompatActivity {
         name3 = findViewById(R.id.name3);
         name4 = findViewById(R.id.name4);
     }
-    private void Search(){
-        Intent start = new Intent(getApplicationContext(),SearchActivity.class);
-        startActivity(start);
-    }
     private void AddActivity(){
         Intent start = new Intent(getApplicationContext(),AddActivity.class);
         startActivity(start);
@@ -49,11 +45,6 @@ public class AboutActivity extends AppCompatActivity {
                 break;
             case R.id.add:
                 AddActivity();
-                break;
-            case R.id.search:
-                Search();
-                break;
-            case R.id.view:
                 break;
         }
         return super.onOptionsItemSelected(item);

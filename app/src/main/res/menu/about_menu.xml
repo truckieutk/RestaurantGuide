@@ -10,12 +10,4 @@
         android:title="Add"
         android:id="@+id/add"/>
 
-    <item
-        android:title="Search"
-        android:id="@+id/search"/>
-
-    <item
-        android:title="View"
-        android:id="@+id/view"/>
-
 </menu>

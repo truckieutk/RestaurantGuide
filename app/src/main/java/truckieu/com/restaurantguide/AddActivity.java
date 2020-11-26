@@ -19,10 +19,10 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
 
+
 public class AddActivity extends AppCompatActivity {
     private TextView title;
     private EditText name, address, phone, description;
-
     private RatingBar ratingBar;
     private Button submit;
 
@@ -32,7 +32,6 @@ public class AddActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-
         submit = findViewById(R.id.submit);
         title = findViewById(R.id.title);
         name = findViewById(R.id.name);
@@ -41,8 +40,6 @@ public class AddActivity extends AppCompatActivity {
         //tag = findViewById(R.id.tag);
         description = findViewById(R.id.description);
         ratingBar = findViewById(R.id.rating);
-
-        //Create Array Adapter
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_singlechoice, tag);
         //Find TextView control
         AutoCompleteTextView acTextView = (AutoCompleteTextView) findViewById(R.id.tag);
@@ -63,6 +60,10 @@ public class AddActivity extends AppCompatActivity {
         Intent start = new Intent(getApplicationContext(),MainActivity.class);
         startActivity(start);
     }
+    private void About(){
+        Intent start = new Intent(getApplicationContext(), AboutActivity.class);
+        startActivity(start);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -72,7 +73,16 @@ public class AddActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Home();
+        int id= item.getItemId();
+        switch (id){
+            case R.id.home:
+                Home();
+                break;
+            case R.id.about:
+                About();
+                break;
+        }
         return super.onOptionsItemSelected(item);
     }
 }
+
