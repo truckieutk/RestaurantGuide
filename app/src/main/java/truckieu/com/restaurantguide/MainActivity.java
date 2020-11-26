@@ -12,7 +12,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.SearchView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -28,13 +27,12 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycleview);
         searchView = findViewById(R.id.search);
         ArrayList<Place> placesData = new ArrayList<Place>();
-        placesData.add(new Place("Trattoria Leonardo"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Italian", "(416) 239-2008"));
-        placesData.add(new Place("Durbar Indian Cuisine"," 2469 Bloor St W, Toronto, ON M6S 1P7","Indian Cuisine", "(416) 762-4441"));
-        placesData.add(new Place("Mai Bistro"," 4906 Dundas St W, Etobicoke, ON M9A 1B5","Italian", "(647) 343-3130"));
-        placesData.add(new Place("Trattoria Leonardo"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Italian", "(416) 239-2008"));
-        placesData.add(new Place("Trattoria Leonardo"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Italian", "(416) 239-2008"));
-        placesData.add(new Place("Trattoria Leonardo"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Italian", "(416) 239-2008"));
-        placesData.add(new Place("Trattoria Leonardo"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Italian", "(416) 239-2008"));
+        placesData.add(new Place("Trattoria Leonardo"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Reasonable Price", "(416) 239-2008","Vegetarian", "4"));
+        placesData.add(new Place("Durbar Indian Cuisine"," 2469 Bloor St W, Toronto, ON M6S 1P7","Good curry", "(416) 762-4441","Asian Cuisine","3"));
+        placesData.add(new Place("Mai Bistro"," 4906 Dundas St W, Etobicoke, ON M9A 1B5","Having patio and LCBO", "(647) 343-3130","BBQ","4"));
+        placesData.add(new Place("Pour House"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","LCBO and fries is good", "(416) 239-2008","Drinks","5"));
+        placesData.add(new Place("MiMi Chicken"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Good garlic honey chicken", "(416) 239-2008","Asian Cuisine","4"));
+        placesData.add(new Place("Teddy Story"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Can buy Teddy bear and coffee", "(416) 239-2008","Dessert","4"));
 
 
         placeAdapter = new PlacesAdapter(placesData);

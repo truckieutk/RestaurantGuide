@@ -29,10 +29,14 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlaceItemView> {
         String address = select.getAddress();
         String phone = select.getPhone();
         String description = select.getDescription();
+        String tag = select.getTag();
+        String rating = select.getRating();
         placeItemView.name.setText(nameRes);
-        placeItemView.address.setText(address);
-        placeItemView.phone.setText(phone);
-        placeItemView.description.setText(description);
+        placeItemView.address.setText("Address: " + address);
+        placeItemView.phone.setText("Phone: "+phone);
+        placeItemView.description.setText("Description: " + description);
+        placeItemView.tag.setText("Tag: " + tag);
+        placeItemView.rating.setText("Rating: " + rating);
 
     }
 
@@ -41,5 +45,4 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlaceItemView> {
         return placesData.size();
     }
 }
-
 
