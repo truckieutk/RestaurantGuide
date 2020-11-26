@@ -65,11 +65,6 @@ public class AddActivity extends AppCompatActivity {
         startActivity(start);
     }
 
-    private void Search() {
-        Intent start = new Intent(getApplicationContext(), SearchActivity.class);
-        startActivity(start);
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.add_menu,menu);
@@ -82,9 +77,6 @@ public class AddActivity extends AppCompatActivity {
         switch (id){
             case R.id.home:
                 Home();
-                break;
-            case R.id.search:
-                Search();
                 break;
             case R.id.about:
                 About();
