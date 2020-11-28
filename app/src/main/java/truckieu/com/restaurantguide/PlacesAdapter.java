@@ -41,7 +41,7 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlaceItemView> {
         String phone = selectedPlace.getPhone();
         String description = selectedPlace.getDescription();
         String tag = selectedPlace.getTag();
-        String rating = selectedPlace.getRating();
+        Float rating = selectedPlace.getRating();
         placeItemView.name.setText(nameRes);
         //placeItemView.address.setText("Address: " + address);
         //placeItemView.phone.setText("Phone: "+phone);

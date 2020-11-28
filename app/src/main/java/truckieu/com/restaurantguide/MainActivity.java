@@ -1,17 +1,20 @@
 package truckieu.com.restaurantguide;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -28,12 +31,12 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recycleview);
         searchView = findViewById(R.id.search);
-        placesData.add(new Place("Trattoria Leonardo"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Reasonable Price", "(416) 239-2008","Vegetarian", "4"));
-        placesData.add(new Place("Durbar Indian Cuisine"," 2469 Bloor St W, Toronto, ON M6S 1P7","Good curry", "(416) 762-4441","Asian Cuisine","3"));
-        placesData.add(new Place("Mai Bistro"," 4906 Dundas St W, Etobicoke, ON M9A 1B5","Having patio and LCBO", "(647) 343-3130","BBQ","4"));
-        placesData.add(new Place("Pour House"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","LCBO and fries is good", "(416) 239-2008","Drinks","5"));
-        placesData.add(new Place("MiMi Chicken"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Good garlic honey chicken", "(416) 239-2008","Asian Cuisine","4"));
-        placesData.add(new Place("Teddy Story"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Can buy Teddy bear and coffee", "(416) 239-2008","Dessert","4"));
+        placesData.add(new Place(1,"Trattoria Leonardo"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Reasonable Price", "(416) 239-2008","Vegetarian", "4"));
+        placesData.add(new Place(2,"Durbar Indian Cuisine"," 2469 Bloor St W, Toronto, ON M6S 1P7","Good curry", "(416) 762-4441","Asian Cuisine","3"));
+        placesData.add(new Place(3,"Mai Bistro"," 4906 Dundas St W, Etobicoke, ON M9A 1B5","Having patio and LCBO", "(647) 343-3130","BBQ","4"));
+        placesData.add(new Place(4,"Pour House"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","LCBO and fries is good", "(416) 239-2008","Drinks","5"));
+        placesData.add(new Place(5,"MiMi Chicken"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Good garlic honey chicken", "(416) 239-2008","Asian Cuisine","4"));
+        placesData.add(new Place(6,"Teddy Story"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Can buy Teddy bear and coffee", "(416) 239-2008","Dessert","4"));
 
 
         placeAdapter = new PlacesAdapter(placesData);
@@ -48,6 +51,30 @@ public class MainActivity extends Activity {
         Place selectedPlace = placesData.get(position);
         intent.putExtra("selectedPlace", selectedPlace);
         startActivity(intent);
+        DetailPlaceActivity.placesActivity=this;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void deletePlace(final Integer placeId) {
+        //removeIf is a Lambda method using arrow, return true false
+        placesData.removeIf(place -> place.getPlaceId().equals(placeId));
+        placeAdapter.notifyDataSetChanged();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void updatePlace(Place updatedPlace) {
+        //loop through each element in the array to see if any of it match with the ID we find
+        placesData.forEach(place -> {
+            if (place.getPlaceId().equals(updatedPlace.getPlaceId())) {
+                //if matched, then update
+                place.setName(updatedPlace.getName());
+                place.setAddress(updatedPlace.getAddress());
+                place.setPhone(updatedPlace.getPhone());
+                place.setDescription(updatedPlace.getDescription());
+                place.setTag(updatedPlace.getTag());
+                place.setRating(updatedPlace.getRating());
+            }
+        });
     }
 
     @Override

@@ -4,20 +4,27 @@ package truckieu.com.restaurantguide;
 import java.io.Serializable;
 
 public class Place implements Serializable {
+    private Integer placeId;
     private String name;
     private String address;
     private String description;
     private String phone;
     private String tag;
-    private String rating;
+    private Float rating;
 
-    public Place(String name, String address, String description, String phone, String tag, String rating) {
+
+    public Place(Integer placeId, String name, String address, String description, String phone, String tag, Float rating) {
+        this.placeId=placeId;
         this.name = name;
         this.address = address;
         this.description = description;
         this.phone = phone;
         this.tag = tag;
         this.rating=rating;
+    }
+
+    public Integer getPlaceId() {
+        return placeId;
     }
 
     public String getName() {
@@ -60,11 +67,11 @@ public class Place implements Serializable {
         this.tag=tag;
     }
 
-    public String getRating(){
+    public Float getRating(){
         return rating;
     }
 
-    public void setRating(String rating){
+    public void setRating(Float rating){
         this.rating=rating;
     }
 
