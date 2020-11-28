@@ -1,7 +1,9 @@
 package truckieu.com.restaurantguide;
 
 
-public class Place {
+import java.io.Serializable;
+
+public class Place implements Serializable {
     private String name;
     private String address;
     private String description;
@@ -64,5 +66,15 @@ public class Place {
 
     public void setRating(String rating){
         this.rating=rating;
+    }
+
+    @Override
+    public String toString(){
+        return "Name: " + name +
+                "\nAddress: "+ address +
+                "\nPhone: "+phone +
+                "\nDescription: "+description +
+                "\nTag: " + tag +
+                "\nRating: " + rating;
     }
 }

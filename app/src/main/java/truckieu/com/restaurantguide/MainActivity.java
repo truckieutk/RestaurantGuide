@@ -1,10 +1,10 @@
 package truckieu.com.restaurantguide;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -15,10 +15,12 @@ import android.widget.SearchView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter placeAdapter;
     private SearchView searchView;
+
+    private ArrayList<Place> placesData = new ArrayList<Place>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recycleview);
         searchView = findViewById(R.id.search);
-        ArrayList<Place> placesData = new ArrayList<Place>();
         placesData.add(new Place("Trattoria Leonardo"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Reasonable Price", "(416) 239-2008","Vegetarian", "4"));
         placesData.add(new Place("Durbar Indian Cuisine"," 2469 Bloor St W, Toronto, ON M6S 1P7","Good curry", "(416) 762-4441","Asian Cuisine","3"));
         placesData.add(new Place("Mai Bistro"," 4906 Dundas St W, Etobicoke, ON M9A 1B5","Having patio and LCBO", "(647) 343-3130","BBQ","4"));
@@ -36,9 +37,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         placeAdapter = new PlacesAdapter(placesData);
+        ((PlacesAdapter)placeAdapter).setPlacesActivity(this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setAdapter(placeAdapter);
         recyclerView.setLayoutManager(layoutManager);
+    }
+
+    public void navigateToDetailPlace(Integer position){
+        Intent intent = new Intent(MainActivity.this, DetailPlaceActivity.class);
+        Place selectedPlace = placesData.get(position);
+        intent.putExtra("selectedPlace", selectedPlace);
+        startActivity(intent);
     }
 
     @Override

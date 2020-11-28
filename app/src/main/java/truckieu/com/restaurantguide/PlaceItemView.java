@@ -8,7 +8,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class PlaceItemView extends RecyclerView.ViewHolder {
     public TextView name, address, phone, description, tag, rating;
-    public Button edit, map, delete;
+    private MainActivity placesActivity;
+
+    public void setPlacesActivity(MainActivity placesActivity) {
+        this.placesActivity = placesActivity;
+    }
 
     public PlaceItemView(View view){
         super(view);
@@ -18,9 +22,14 @@ public class PlaceItemView extends RecyclerView.ViewHolder {
         description = view.findViewById(R.id.description);
         tag=view.findViewById(R.id.tag);
         rating=view.findViewById(R.id.rating);
-        edit=view.findViewById(R.id.edit);
-        map=view.findViewById(R.id.map);
-        delete=view.findViewById(R.id.delete);
+        view.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                PlaceItemView.this.placesActivity.navigateToDetailPlace(getLayoutPosition());
+
+            }
+        });
+
     }
 
 }
