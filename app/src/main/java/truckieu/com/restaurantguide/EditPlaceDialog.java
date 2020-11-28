@@ -44,7 +44,7 @@ public class EditPlaceDialog extends Dialog {
         phone.setText(selectedPlace.getPhone());
         description.setText(selectedPlace.getDescription());
         tag.setText(selectedPlace.getTag());
-        rating.setRating(selectedPlace.getRating()); // Problem - Consider to change from String to Float
+        rating.setRating(selectedPlace.getRating()); // Problem - Consider to change from String to Integer
         save.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
@@ -55,7 +55,7 @@ public class EditPlaceDialog extends Dialog {
                 selectedPlace.setPhone(phone.getText().toString().trim());
                 selectedPlace.setDescription(description.getText().toString().trim());
                 selectedPlace.setTag(tag.getText().toString().trim());
-                selectedPlace.setRating(rating.getRating()); //Problem - consider to change from String to Float
+                selectedPlace.setRating((int) rating.getRating()); //Problem - consider to change from String to Integer
 
                 EditPlaceDialog.this.placesActivity.updatePlace(selectedPlace);
                 EditPlaceDialog.this.detailPlaceActivity.setSelectedPlace(selectedPlace); //update the Detail Screen

@@ -10,10 +10,10 @@ public class Place implements Serializable {
     private String description;
     private String phone;
     private String tag;
-    private Float rating;
+    private Integer rating;
 
 
-    public Place(Integer placeId, String name, String address, String description, String phone, String tag, Float rating) {
+    public Place(Integer placeId, String name, String address, String description, String phone, String tag, Integer rating) {
         this.placeId=placeId;
         this.name = name;
         this.address = address;
@@ -67,11 +67,11 @@ public class Place implements Serializable {
         this.tag=tag;
     }
 
-    public Float getRating(){
+    public Integer getRating(){
         return rating;
     }
 
-    public void setRating(Float rating){
+    public void setRating(Integer rating){
         this.rating=rating;
     }
 
