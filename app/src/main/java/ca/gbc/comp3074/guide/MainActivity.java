@@ -20,28 +20,54 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter placeAdapter;
     private SearchView searchView;
-
+    private ArrayList<Place> placesData = new ArrayList<Place>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recycleview);
         searchView = findViewById(R.id.search);
-        ArrayList<Place> placesData = new ArrayList<Place>();
-        placesData.add(new Place("Trattoria Leonardo"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Italian", "(416) 239-2008"));
-        placesData.add(new Place("Durbar Indian Cuisine"," 2469 Bloor St W, Toronto, ON M6S 1P7","Indian Cuisine", "(416) 762-4441"));
-        placesData.add(new Place("Mai Bistro"," 4906 Dundas St W, Etobicoke, ON M9A 1B5","Italian", "(647) 343-3130"));
-        placesData.add(new Place("Trattoria Leonardo"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Italian", "(416) 239-2008"));
-        placesData.add(new Place("Trattoria Leonardo"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Italian", "(416) 239-2008"));
-        placesData.add(new Place("Trattoria Leonardo"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Italian", "(416) 239-2008"));
-        placesData.add(new Place("Trattoria Leonardo"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Italian", "(416) 239-2008"));
+
+        placesData.add(new Place(1,"Trattoria Leonardo"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Italian", "(416) 239-2008","good",5));
+        placesData.add(new Place(2,"Durbar Indian Cuisine"," 2469 Bloor St W, Toronto, ON M6S 1P7","Indian Cuisine", "(416) 762-4441","so so",4));
+        placesData.add(new Place(3,"Mai Bistro"," 4906 Dundas St W, Etobicoke, ON M9A 1B5","Italian", "(647) 343-3130","normal",3));
+        placesData.add(new Place(4,"Trattoria Leonardo"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Italian", "(416) 239-2008","normal",3));
+        placesData.add(new Place(5,"Trattoria Leonardo"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Italian", "(416) 239-2008","normal",3));
+        placesData.add(new Place(6,"Trattoria Leonardo"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Italian", "(416) 239-2008","normal",3));
+        placesData.add(new Place(7,"Trattoria Leonardo"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Italian", "(416) 239-2008","normal",3));
 
 
         placeAdapter = new PlacesAdapter(placesData);
+        ((PlacesAdapter)placeAdapter).setPlacesActivity(this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setAdapter(placeAdapter);
         recyclerView.setLayoutManager(layoutManager);
     }
+    public void navigateToDetailPlace(Integer position){
+        Intent intent = new Intent(MainActivity.this, DetailPlaceActivity.class);
+        Place selectedPlace = placesData.get(position);
+        intent.putExtra("selectedPlace", selectedPlace);
+        startActivity(intent);
+        DetailPlaceActivity.placesActivity=this;
+    }
+    public void deletePlace(Integer placeId){
+        placesData.removeIf(place -> place.getPlaceId().equals(placeId));
+        placeAdapter.notifyDataSetChanged();
+        }
+    public void editPlace(Place editPlace){
+        placesData.forEach(place -> {
+            if(place.getPlaceId().equals(editPlace.getPlaceId())){
+                place.setName(editPlace.getName());
+                place.setAddress(editPlace.getAddress());
+                place.setDescription(editPlace.getDescription());
+                place.setPhone(editPlace.getPhone());
+                place.setTag(editPlace.getTag());
+                place.setRating(editPlace.getRating());
+            }
+        });
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

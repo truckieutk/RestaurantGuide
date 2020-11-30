@@ -11,6 +11,7 @@
         android:id="@+id/recycleview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search"
         tools:ignore="MissingConstraints"
@@ -18,7 +19,7 @@
 
     <SearchView
         android:id="@+id/search"
-        android:layout_width="409dp"
+        android:layout_width="wrap_content"
         android:layout_height="79dp"
         android:iconifiedByDefault="false"
 

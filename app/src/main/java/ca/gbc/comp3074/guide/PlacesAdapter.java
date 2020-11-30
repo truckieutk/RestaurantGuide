@@ -11,14 +11,23 @@ import java.util.ArrayList;
 
 public class PlacesAdapter extends RecyclerView.Adapter<PlaceItemView> {
     private ArrayList<Place> placesData;
+    private MainActivity placesActivity;
+
+    //constructor
     PlacesAdapter(ArrayList<Place> placesData){
         this.placesData = placesData;
     }
+
+    public void setPlacesActivity(MainActivity placesActivity) {
+        this.placesActivity = placesActivity;
+    }
+
     @NonNull
     @Override
     public PlaceItemView onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.place_item_view,viewGroup,false);
         PlaceItemView placeItemView = new PlaceItemView(view);
+        placeItemView.setPlacesActivity(this.placesActivity);
         return placeItemView;
     }
 
@@ -29,15 +38,24 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlaceItemView> {
         String address = select.getAddress();
         String phone = select.getPhone();
         String description = select.getDescription();
+        String tag = select.getTag();
+        float rating = select.getRating();
         placeItemView.name.setText(nameRes);
         placeItemView.address.setText(address);
         placeItemView.phone.setText(phone);
         placeItemView.description.setText(description);
+        placeItemView.tag.setText(tag);
+
+
 
     }
 
     @Override
     public int getItemCount() {
+
         return placesData.size();
     }
+    //get total elements in array
+
+
 }
