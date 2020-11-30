@@ -33,24 +33,20 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlaceItemView> {
 
     @Override
     public void onBindViewHolder(@NonNull PlaceItemView placeItemView, int i) {
-        //get object at index i
-        Place selectedPlace = placesData.get(i);
-
-        String nameRes = selectedPlace.getName();
-        String address = selectedPlace.getAddress();
-        String phone = selectedPlace.getPhone();
-        String description = selectedPlace.getDescription();
-        String tag = selectedPlace.getTag();
-        Integer rating = selectedPlace.getRating();
+        Place select = placesData.get(i);
+        String nameRes = select.getName();
+        String address = select.getAddress();
+        String phone = select.getPhone();
+        String description = select.getDescription();
+        String tag = select.getTag();
+        float rating = select.getRating();
         placeItemView.name.setText(nameRes);
-        //placeItemView.address.setText("Address: " + address);
-        //placeItemView.phone.setText("Phone: "+phone);
-        //placeItemView.description.setText("Description: " + description);
-        placeItemView.tag.setText("Tag: " + tag);
-        placeItemView.rating.setText("Rating: " + rating);
+        placeItemView.address.setText(address);
+        placeItemView.phone.setText(phone);
+        placeItemView.description.setText(description);
+        placeItemView.tag.setText(tag);
 
-        //just show name, tag and rating in the main list view
-        //will show more detail in detail place
+
 
     }
 
@@ -63,4 +59,3 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlaceItemView> {
 
 
 }
-

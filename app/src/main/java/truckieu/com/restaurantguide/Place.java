@@ -10,17 +10,18 @@ public class Place implements Serializable {
     private String description;
     private String phone;
     private String tag;
-    private Integer rating;
+    private float rating;
 
 
-    public Place(Integer placeId, String name, String address, String description, String phone, String tag, Integer rating) {
-        this.placeId=placeId;
+
+    public Place(Integer placeId, String name, String address, String description, String phone, String tag, float rating) {
+        this.placeId = placeId;
         this.name = name;
         this.address = address;
         this.description = description;
         this.phone = phone;
         this.tag = tag;
-        this.rating=rating;
+        this.rating = rating;
     }
 
     public Integer getPlaceId() {
@@ -58,30 +59,31 @@ public class Place implements Serializable {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
-    public String getTag(){
+    public String getTag() {
         return tag;
     }
 
-    public void setTag(String tag){
-        this.tag=tag;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
-    public Integer getRating(){
+    public float getRating() {
         return rating;
     }
 
-    public void setRating(Integer rating){
-        this.rating=rating;
+    public void setRating(float rating) {
+        this.rating = rating;
     }
 
     @Override
-    public String toString(){
-        return "Name: " + name +
-                "\nAddress: "+ address +
-                "\nPhone: "+phone +
-                "\nDescription: "+description +
-                "\nTag: " + tag +
-                "\nRating: " + rating;
+    public String toString() {
+        return "Place{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", description='" + description + '\'' +
+                ", phone='" + phone + '\'' +
+                ", tag='" + tag + '\'' +
+                ", rating='" + rating + '\'' +
+                '}';
     }
 }

@@ -45,8 +45,6 @@ public class AddActivity extends AppCompatActivity {
         description = findViewById(R.id.description);
         ratingBar = (RatingBar) findViewById(R.id.rating);
 
-        lvRes=(ListView) findViewById(R.id.listAdd);
-        arrayInfo = new ArrayList<>();
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_singlechoice, tag);
         //Find TextView control

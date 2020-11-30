@@ -1,13 +1,14 @@
 package truckieu.com.restaurantguide;
 
 import android.view.View;
-import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 public class PlaceItemView extends RecyclerView.ViewHolder {
-    public TextView name, address, phone, description, tag, rating;
+    public TextView name, address, phone, description, tag;
+    private RatingBar ratingBar;
     private MainActivity placesActivity;
 
     public void setPlacesActivity(MainActivity placesActivity) {
@@ -21,15 +22,13 @@ public class PlaceItemView extends RecyclerView.ViewHolder {
         phone = view.findViewById(R.id.phone);
         description = view.findViewById(R.id.description);
         tag=view.findViewById(R.id.tag);
-        rating=view.findViewById(R.id.rating);
+        ratingBar=view.findViewById(R.id.ratingBar);
         view.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 PlaceItemView.this.placesActivity.navigateToDetailPlace(getLayoutPosition());
-
             }
         });
 
     }
-
 }
