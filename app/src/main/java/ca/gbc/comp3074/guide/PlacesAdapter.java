@@ -55,7 +55,10 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlaceItemView> {
 
         return placesData.size();
     }
-    //get total elements in array
 
+    public void  filterList(ArrayList<Place> filteredList){
+        placesData=filteredList;
+        notifyDataSetChanged();
+    }
 
 }

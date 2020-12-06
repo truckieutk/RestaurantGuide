@@ -7,10 +7,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -19,15 +22,15 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter placeAdapter;
-    private SearchView searchView;
     private ArrayList<Place> placesData = new ArrayList<Place>();
+    private EditText search;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recycleview);
-        searchView = findViewById(R.id.search);
-
         placesData.add(new Place(1,"Trattoria Leonardo"," 4740 Dundas St W, Etobicoke, ON M9A 1A9","Italian", "(416) 239-2008","good",5));
         placesData.add(new Place(2,"Durbar Indian Cuisine"," 2469 Bloor St W, Toronto, ON M6S 1P7","Indian Cuisine", "(416) 762-4441","so so",4));
         placesData.add(new Place(3,"Mai Bistro"," 4906 Dundas St W, Etobicoke, ON M9A 1B5","Italian", "(647) 343-3130","normal",3));
@@ -42,7 +45,36 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setAdapter(placeAdapter);
         recyclerView.setLayoutManager(layoutManager);
+        search = findViewById(R.id.search);
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
     }
+
+    private void filter(String text){
+        ArrayList<Place> filteredList = new ArrayList<>();
+
+        for (Place place : placesData){
+            if(place.getName().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(place);
+            }
+        }
+        placeAdapter.filterList(filteredList);
+    }
+
     public void navigateToDetailPlace(Integer position){
         Intent intent = new Intent(MainActivity.this, DetailPlaceActivity.class);
         Place selectedPlace = placesData.get(position);
